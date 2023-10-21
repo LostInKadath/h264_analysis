@@ -1,14 +1,14 @@
-/* 
- * H.264 ·ÖÎöÆ÷
+ï»¿/* 
+ * H.264 åˆ†æå™¨
  * H.264 Analysis
  *
- * À×Ïöæè Lei Xiaohua
+ * é›·éœ„éª… Lei Xiaohua
  * leixiaohua1020@126.com
- * ÖĞ¹ú´«Ã½´óÑ§/Êı×ÖµçÊÓ¼¼Êõ
+ * ä¸­å›½ä¼ åª’å¤§å­¦/æ•°å­—ç”µè§†æŠ€æœ¯
  * Communication University of China / Digital TV Technology
  * http://blog.csdn.net/leixiaohua1020
  * 
- * H.264ÂëÁ÷·ÖÎö¹¤¾ß
+ * H.264ç æµåˆ†æå·¥å…·
  * H.264 Stream Analysis Tools
  *
  */
@@ -19,25 +19,25 @@
 #include "h264_analyze.h"
 #include <vector>
 using std::vector;
-// CSpecialVH264Dlg ¶Ô»°¿ò
+// CSpecialVH264Dlg å¯¹è¯æ¡†
 class CSpecialVH264Dlg : public CDialogEx
 {
-// ¹¹Ôì
+// æ„é€ 
 public:
-	CSpecialVH264Dlg(CWnd* pParent = NULL);	// ±ê×¼¹¹Ôìº¯Êı
+	CSpecialVH264Dlg(CWnd* pParent = NULL);	// æ ‡å‡†æ„é€ å‡½æ•°
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_SPECIAL_V_H264 };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV æ”¯æŒ
 
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	HICON m_hIcon;
 
-	// Éú³ÉµÄÏûÏ¢Ó³Éäº¯Êı
+	// ç”Ÿæˆçš„æ¶ˆæ¯æ˜ å°„å‡½æ•°
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
@@ -55,7 +55,7 @@ public:
 	void SystemClear();
 	afx_msg void OnBnClickedVH264About();
 	CEdit m_vh264nalinfo;
-	//Ò»ÌõPacket¼ÇÂ¼
+	//ä¸€æ¡Packetè®°å½•
 	typedef struct NALInfo{
 		int data_offset;
 		int data_lenth;

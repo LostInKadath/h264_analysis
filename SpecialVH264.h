@@ -1,28 +1,28 @@
-/* 
- * H.264 ·ÖÎöÆ÷
+ï»¿/* 
+ * H.264 åˆ†æå™¨
  * H.264 Analysis
  *
- * À×Ïöæè Lei Xiaohua
+ * é›·éœ„éª… Lei Xiaohua
  * leixiaohua1020@126.com
- * ÖĞ¹ú´«Ã½´óÑ§/Êı×ÖµçÊÓ¼¼Êõ
+ * ä¸­å›½ä¼ åª’å¤§å­¦/æ•°å­—ç”µè§†æŠ€æœ¯
  * Communication University of China / Digital TV Technology
  * http://blog.csdn.net/leixiaohua1020
  * 
- * H.264ÂëÁ÷·ÖÎö¹¤¾ß
+ * H.264ç æµåˆ†æå·¥å…·
  * H.264 Stream Analysis Tools
  *
  */
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "ÔÚ°üº¬´ËÎÄ¼şÖ®Ç°°üº¬¡°stdafx.h¡±ÒÔÉú³É PCH ÎÄ¼ş"
+	#error "åœ¨åŒ…å«æ­¤æ–‡ä»¶ä¹‹å‰åŒ…å«â€œstdafx.hâ€ä»¥ç”Ÿæˆ PCH æ–‡ä»¶"
 #endif
 
-#include "resource.h"		// Ö÷·ûºÅ
+#include "resource.h"		// ä¸»ç¬¦å·
 
 
 // CSpecialVH264App:
-// ÓĞ¹Ø´ËÀàµÄÊµÏÖ£¬Çë²ÎÔÄ SpecialVH264.cpp
+// æœ‰å…³æ­¤ç±»çš„å®ç°ï¼Œè¯·å‚é˜… SpecialVH264.cpp
 //
 
 class CSpecialVH264App : public CWinApp
@@ -30,12 +30,12 @@ class CSpecialVH264App : public CWinApp
 public:
 	CSpecialVH264App();
 
-// ÖØĞ´
+// é‡å†™
 public:
 	virtual BOOL InitInstance();
-	//¼ÓÔØÓïÑÔÅäÖÃ
+	//åŠ è½½è¯­è¨€é…ç½®
 	void LoadLaguage();
-// ÊµÏÖ
+// å®ç°
 
 	DECLARE_MESSAGE_MAP()
 };

@@ -1,14 +1,14 @@
-/* 
- * H.264 ·ÖÎöÆ÷
+ï»¿/* 
+ * H.264 åˆ†æå™¨
  * H.264 Analysis
  *
- * À×Ïöæè Lei Xiaohua
+ * é›·éœ„éª… Lei Xiaohua
  * leixiaohua1020@126.com
- * ÖĞ¹ú´«Ã½´óÑ§/Êı×ÖµçÊÓ¼¼Êõ
+ * ä¸­å›½ä¼ åª’å¤§å­¦/æ•°å­—ç”µè§†æŠ€æœ¯
  * Communication University of China / Digital TV Technology
  * http://blog.csdn.net/leixiaohua1020
  * 
- * H.264ÂëÁ÷·ÖÎö¹¤¾ß
+ * H.264ç æµåˆ†æå·¥å…·
  * H.264 Stream Analysis Tools
  *
  */
@@ -22,20 +22,20 @@
 #endif
 
 
-// ÓÃÓÚÓ¦ÓÃ³ÌĞò¡°¹ØÓÚ¡±²Ëµ¥ÏîµÄ CAboutDlg ¶Ô»°¿ò
+// ç”¨äºåº”ç”¨ç¨‹åºâ€œå…³äºâ€èœå•é¡¹çš„ CAboutDlg å¯¹è¯æ¡†
 
 class CAboutDlg : public CDialogEx
 {
 public:
 	CAboutDlg();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_ABOUTBOX };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -53,7 +53,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// CSpecialVH264Dlg ¶Ô»°¿ò
+// CSpecialVH264Dlg å¯¹è¯æ¡†
 
 
 
@@ -87,15 +87,15 @@ ON_NOTIFY(LVN_ITEMCHANGED, IDC_V_H264_NALLIST, &CSpecialVH264Dlg::OnItemchangedV
 END_MESSAGE_MAP()
 
 
-// CSpecialVH264Dlg ÏûÏ¢´¦Àí³ÌĞò
+// CSpecialVH264Dlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CSpecialVH264Dlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	// ½«¡°¹ØÓÚ...¡±²Ëµ¥ÏîÌí¼Óµ½ÏµÍ³²Ëµ¥ÖĞ¡£
+	// å°†â€œå…³äº...â€èœå•é¡¹æ·»åŠ åˆ°ç³»ç»Ÿèœå•ä¸­ã€‚
 
-	// IDM_ABOUTBOX ±ØĞëÔÚÏµÍ³ÃüÁî·¶Î§ÄÚ¡£
+	// IDM_ABOUTBOX å¿…é¡»åœ¨ç³»ç»Ÿå‘½ä»¤èŒƒå›´å†…ã€‚
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -112,10 +112,10 @@ BOOL CSpecialVH264Dlg::OnInitDialog()
 			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
 		}
 	}
-	//ÕûĞĞÑ¡Ôñ£»ÓĞ±í¸ñÏß£»±íÍ·£»µ¥»÷¼¤»î
+	//æ•´è¡Œé€‰æ‹©ï¼›æœ‰è¡¨æ ¼çº¿ï¼›è¡¨å¤´ï¼›å•å‡»æ¿€æ´»
 	DWORD dwExStyle=LVS_EX_FULLROWSELECT|LVS_EX_GRIDLINES|LVS_EX_HEADERDRAGDROP|LVS_EX_ONECLICKACTIVATE;
-	//±¨±í·ç¸ñ£»µ¥ĞĞÑ¡Ôñ£»¸ßÁÁÏÔÊ¾Ñ¡ÔñĞĞ
-	//ÊÓÆµ
+	//æŠ¥è¡¨é£æ ¼ï¼›å•è¡Œé€‰æ‹©ï¼›é«˜äº®æ˜¾ç¤ºé€‰æ‹©è¡Œ
+	//è§†é¢‘
 	m_vh264nallist.ModifyStyle(0,LVS_SINGLESEL|LVS_REPORT|LVS_SHOWSELALWAYS);
 	m_vh264nallist.SetExtendedStyle(dwExStyle);
 
@@ -131,18 +131,18 @@ BOOL CSpecialVH264Dlg::OnInitDialog()
 		NULL,
 		_T("H.264 Files (*.264,*.h264)|*.264;*.h264|All Files (*.*)|*.*||")
 		);
-	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯
-	//  Ö´ĞĞ´Ë²Ù×÷
-	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê
-	SetIcon(m_hIcon, FALSE);		// ÉèÖÃĞ¡Í¼±ê
+	// è®¾ç½®æ­¤å¯¹è¯æ¡†çš„å›¾æ ‡ã€‚å½“åº”ç”¨ç¨‹åºä¸»çª—å£ä¸æ˜¯å¯¹è¯æ¡†æ—¶ï¼Œæ¡†æ¶å°†è‡ªåŠ¨
+	//  æ‰§è¡Œæ­¤æ“ä½œ
+	SetIcon(m_hIcon, TRUE);			// è®¾ç½®å¤§å›¾æ ‡
+	SetIcon(m_hIcon, FALSE);		// è®¾ç½®å°å›¾æ ‡
 
-	// TODO: ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–ä»£ç 
 	m_vh264lang.InsertString(0,_T("Chinese"));
 	m_vh264lang.InsertString(1,_T("English"));
 
 	//_CrtSetBreakAlloc(5819);
 
-	return TRUE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE
+	return TRUE;  // é™¤éå°†ç„¦ç‚¹è®¾ç½®åˆ°æ§ä»¶ï¼Œå¦åˆ™è¿”å› TRUE
 }
 
 void CSpecialVH264Dlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -158,19 +158,19 @@ void CSpecialVH264Dlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// Èç¹ûÏò¶Ô»°¿òÌí¼Ó×îĞ¡»¯°´Å¥£¬ÔòĞèÒªÏÂÃæµÄ´úÂë
-//  À´»æÖÆ¸ÃÍ¼±ê¡£¶ÔÓÚÊ¹ÓÃÎÄµµ/ÊÓÍ¼Ä£ĞÍµÄ MFC Ó¦ÓÃ³ÌĞò£¬
-//  Õâ½«ÓÉ¿ò¼Ü×Ô¶¯Íê³É¡£
+// å¦‚æœå‘å¯¹è¯æ¡†æ·»åŠ æœ€å°åŒ–æŒ‰é’®ï¼Œåˆ™éœ€è¦ä¸‹é¢çš„ä»£ç 
+//  æ¥ç»˜åˆ¶è¯¥å›¾æ ‡ã€‚å¯¹äºä½¿ç”¨æ–‡æ¡£/è§†å›¾æ¨¡å‹çš„ MFC åº”ç”¨ç¨‹åºï¼Œ
+//  è¿™å°†ç”±æ¡†æ¶è‡ªåŠ¨å®Œæˆã€‚
 
 void CSpecialVH264Dlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+		CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Ê¹Í¼±êÔÚ¹¤×÷Çø¾ØĞÎÖĞ¾ÓÖĞ
+		// ä½¿å›¾æ ‡åœ¨å·¥ä½œåŒºçŸ©å½¢ä¸­å±…ä¸­
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -178,7 +178,7 @@ void CSpecialVH264Dlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// »æÖÆÍ¼±ê
+		// ç»˜åˆ¶å›¾æ ‡
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -188,8 +188,8 @@ void CSpecialVH264Dlg::OnPaint()
 	
 }
 
-//µ±ÓÃ»§ÍÏ¶¯×îĞ¡»¯´°¿ÚÊ±ÏµÍ³µ÷ÓÃ´Ëº¯ÊıÈ¡µÃ¹â±ê
-//ÏÔÊ¾¡£
+//å½“ç”¨æˆ·æ‹–åŠ¨æœ€å°åŒ–çª—å£æ—¶ç³»ç»Ÿè°ƒç”¨æ­¤å‡½æ•°å–å¾—å…‰æ ‡
+//æ˜¾ç¤ºã€‚
 HCURSOR CSpecialVH264Dlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -217,12 +217,12 @@ void CSpecialVH264Dlg::OnBnClickedVH264InputurlOpen()
 	h264_nal_parse(this,fileurl);
 }
 
-//Ìí¼ÓÒ»Ìõ¼ÇÂ¼
-//Ã¿¸ö×Ö¶ÎµÄº¬Òå£ºÀàĞÍ£¬Êı¾İ´óĞ¡£¬Ê±¼ä´Á£¬streamid£¬dataµÄµÚÒ»¸ö×Ö½Ú
-//data_lenthÊÇ°üº¬ÆğÊ¼ÂëµÄNAL³¤¶È
-//lenÊÇ²»°üº¬ÆğÊ¼ÂëµÄNAL³¤¶È
+//æ·»åŠ ä¸€æ¡è®°å½•
+//æ¯ä¸ªå­—æ®µçš„å«ä¹‰ï¼šç±»å‹ï¼Œæ•°æ®å¤§å°ï¼Œæ—¶é—´æˆ³ï¼Œstreamidï¼Œdataçš„ç¬¬ä¸€ä¸ªå­—èŠ‚
+//data_lenthæ˜¯åŒ…å«èµ·å§‹ç çš„NALé•¿åº¦
+//lenæ˜¯ä¸åŒ…å«èµ·å§‹ç çš„NALé•¿åº¦
 int CSpecialVH264Dlg::AppendNLInfo(int nal_reference_idc,int nal_unit_type,int len,int data_lenth,int data_offset){
-	//Èç¹ûÑ¡ÔñÁË¡°×î¶àÊä³ö5000Ìõ¡±£¬ÅĞ¶ÏÊÇ·ñ³¬¹ı5000Ìõ
+	//å¦‚æœé€‰æ‹©äº†â€œæœ€å¤šè¾“å‡º5000æ¡â€ï¼Œåˆ¤æ–­æ˜¯å¦è¶…è¿‡5000æ¡
 	if(m_vh264nallistmaxnum.GetCheck()==1&&nl_index>5000){
 		return 0;
 	}
@@ -256,21 +256,21 @@ int CSpecialVH264Dlg::AppendNLInfo(int nal_reference_idc,int nal_unit_type,int l
 	}
 
 	temp_len.Format(_T("%d"),len);
-	//»ñÈ¡µ±Ç°¼ÇÂ¼ÌõÊı
+	//è·å–å½“å‰è®°å½•æ¡æ•°
 	nIndex=m_vh264nallist.GetItemCount();
-	//¡°ĞĞ¡±Êı¾İ½á¹¹
+	//â€œè¡Œâ€æ•°æ®ç»“æ„
 	LV_ITEM lvitem;
 	lvitem.mask=LVIF_TEXT;
 	lvitem.iItem=nIndex;
 	lvitem.iSubItem=0;
-	//×¢£ºvframe_index²»¿ÉÒÔÖ±½Ó¸³Öµ£¡
-	//Îñ±ØÊ¹ÓÃf_indexÖ´ĞĞFormat!ÔÙ¸³Öµ£¡
+	//æ³¨ï¼švframe_indexä¸å¯ä»¥ç›´æ¥èµ‹å€¼ï¼
+	//åŠ¡å¿…ä½¿ç”¨f_indexæ‰§è¡ŒFormat!å†èµ‹å€¼ï¼
 	lvitem.pszText=temp_index.GetBuffer();
 	//------------------------
-	//Õâ¸övector¼ÇÂ¼ÁËnalµÄÎ»ÖÃĞÅÏ¢
-	//Ê¹ÓÃËüÎÒÃÇ¿ÉÒÔ»ñÈ¡µ½NALµÄÏêÏ¸ĞÅÏ¢
-	//ÎÒÃÇÒª´æ´¢°üº¬ÆğÊ¼ÂëµÄ³¤¶È
-	//ÆğÊ¼ÂëÔ­±¾²»ÊÇNALµÄÒ»²¿·Ö
+	//è¿™ä¸ªvectorè®°å½•äº†nalçš„ä½ç½®ä¿¡æ¯
+	//ä½¿ç”¨å®ƒæˆ‘ä»¬å¯ä»¥è·å–åˆ°NALçš„è¯¦ç»†ä¿¡æ¯
+	//æˆ‘ä»¬è¦å­˜å‚¨åŒ…å«èµ·å§‹ç çš„é•¿åº¦
+	//èµ·å§‹ç åŸæœ¬ä¸æ˜¯NALçš„ä¸€éƒ¨åˆ†
 	NALInfo nalinfo;
 	nalinfo.data_lenth=data_lenth;
 	nalinfo.data_offset=data_offset;
@@ -289,7 +289,7 @@ void CSpecialVH264Dlg::SystemClear(){
 	m_vh264nallist.DeleteAllItems();
 	nl_index=0;
 }
-//ListCtrl¼ÓÑÕÉ«
+//ListCtrlåŠ é¢œè‰²
 void CSpecialVH264Dlg::OnCustomdrawMyList ( NMHDR* pNMHDR, LRESULT* pResult )
 {
 	//This code based on Michael Dunn's excellent article on
@@ -323,24 +323,24 @@ void CSpecialVH264Dlg::OnCustomdrawMyList ( NMHDR* pNMHDR, LRESULT* pResult )
 		CString strTemp = m_vh264nallist.GetItemText(nItem,2);
 		if(strTemp.Compare(_T("SLICE"))==0){
 			clrNewTextColor = RGB(0,0,0);		//Set the text 
-			clrNewBkColor = RGB(0,255,255);		//ÇàÉ«
+			clrNewBkColor = RGB(0,255,255);		//é’è‰²
 		}
 		else if(strTemp.Compare(_T("SPS"))==0){
 			clrNewTextColor = RGB(0,0,0);		//text 
-			clrNewBkColor = RGB(255,255,0);		//»ÆÉ«
+			clrNewBkColor = RGB(255,255,0);		//é»„è‰²
 		}
 		else if(strTemp.Compare(_T("PPS"))==0){
 			clrNewTextColor = RGB(0,0,0);		//text
-			clrNewBkColor = RGB(255,153,0);		//¿§·ÈÉ«
+			clrNewBkColor = RGB(255,153,0);		//å’–å•¡è‰²
 		}else if(strTemp.Compare(_T("SEI"))==0){
 			clrNewTextColor = RGB(0,0,0);		//text
-			clrNewBkColor = RGB(255,66,255);			//·ÛºìÉ«
+			clrNewBkColor = RGB(255,66,255);			//ç²‰çº¢è‰²
 		}else if(strTemp.Compare(_T("IDR_SLICE"))==0){
 			clrNewTextColor = RGB(0,0,0);		//text
-			clrNewBkColor = RGB(255,0,0);			//ºìÉ«
+			clrNewBkColor = RGB(255,0,0);			//çº¢è‰²
 		}else{
 			clrNewTextColor = RGB(0,0,0);		//text
-			clrNewBkColor = RGB(255,255,255);			//°×É«
+			clrNewBkColor = RGB(255,255,255);			//ç™½è‰²
 		}
 
 		pLVCD->clrText = clrNewTextColor;
@@ -363,36 +363,36 @@ void CSpecialVH264Dlg::OnBnClickedVH264About()
 
 void CSpecialVH264Dlg::OnDropFiles(HDROP hDropInfo)
 {
-	// TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+	// TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
 	CDialogEx::OnDropFiles(hDropInfo);
 	LPTSTR pFilePathName =(LPTSTR)malloc(MAX_URL_LENGTH);
-	::DragQueryFile(hDropInfo, 0, pFilePathName,MAX_URL_LENGTH);  // »ñÈ¡ÍÏ·ÅÎÄ¼şµÄÍêÕûÎÄ¼şÃû£¬×î¹Ø¼ü£¡
+	::DragQueryFile(hDropInfo, 0, pFilePathName,MAX_URL_LENGTH);  // è·å–æ‹–æ”¾æ–‡ä»¶çš„å®Œæ•´æ–‡ä»¶åï¼Œæœ€å…³é”®ï¼
 	m_vh264inputurl.SetWindowText(pFilePathName);
-	::DragFinish(hDropInfo);   // ×¢ÒâÕâ¸ö²»ÄÜÉÙ£¬ËüÓÃÓÚÊÍ·ÅWindows Îª´¦ÀíÎÄ¼şÍÏ·Å¶ø·ÖÅäµÄÄÚ´æ
+	::DragFinish(hDropInfo);   // æ³¨æ„è¿™ä¸ªä¸èƒ½å°‘ï¼Œå®ƒç”¨äºé‡Šæ”¾Windows ä¸ºå¤„ç†æ–‡ä»¶æ‹–æ”¾è€Œåˆ†é…çš„å†…å­˜
 	free(pFilePathName);
 }
 
 
 void CSpecialVH264Dlg::OnSelchangeVH264Lang()
 {
-	//ÅäÖÃÎÄ¼şÂ·¾¶
+	//é…ç½®æ–‡ä»¶è·¯å¾„
 	char conf_path[300]={0};
-	//»ñµÃexe¾ø¶ÔÂ·¾¶
+	//è·å¾—exeç»å¯¹è·¯å¾„
 	GetModuleFileNameA(NULL,(LPSTR)conf_path,300);//
-	//»ñµÃexeÎÄ¼Ò¼ĞÂ·¾¶
+	//è·å¾—exeæ–‡å®¶å¤¹è·¯å¾„
 	strrchr( conf_path, '\\')[0]= '\0';//
 	//_getcwd(realpath,MYSQL_S_LENGTH);
 	printf("%s",conf_path);
 	strcat(conf_path,"\\configure.ini");
-	//Ğ´ÈëÅäÖÃÎÄ¼ş
+	//å†™å…¥é…ç½®æ–‡ä»¶
 	switch(m_vh264lang.GetCurSel()){
 	case 0:WritePrivateProfileStringA("Settings","language","Chinese",conf_path);break;
 	case 1:WritePrivateProfileStringA("Settings","language","English",conf_path);break;
 	default:break;
 	}
-	//ÖØÆôÈí¼ş
+	//é‡å¯è½¯ä»¶
 	char exe_path[300]={0};
-	//»ñµÃexe¾ø¶ÔÂ·¾¶
+	//è·å¾—exeç»å¯¹è·¯å¾„
 	GetModuleFileNameA(NULL,(LPSTR)exe_path,300);
 	ShellExecuteA( NULL,"open",exe_path,NULL,NULL,SW_SHOWNORMAL);
 	OnCancel();
@@ -402,7 +402,7 @@ void CSpecialVH264Dlg::OnSelchangeVH264Lang()
 void CSpecialVH264Dlg::OnItemchangedVH264Nallist(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
-	 //TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	 //TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	POSITION ps;
 	int nIndex;
 	

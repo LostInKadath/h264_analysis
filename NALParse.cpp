@@ -1,14 +1,14 @@
-/* 
- * H.264 ·ÖÎöÆ÷
+ï»¿/* 
+ * H.264 åˆ†æå™¨
  * H.264 Analysis
  *
- * À×Ïöæè Lei Xiaohua
+ * é›·éœ„éª… Lei Xiaohua
  * leixiaohua1020@126.com
- * ÖĞ¹ú´«Ã½´óÑ§/Êı×ÖµçÊÓ¼¼Êõ
+ * ä¸­å›½ä¼ åª’å¤§å­¦/æ•°å­—ç”µè§†æŠ€æœ¯
  * Communication University of China / Digital TV Technology
  * http://blog.csdn.net/leixiaohua1020
  * 
- * H.264ÂëÁ÷·ÖÎö¹¤¾ß
+ * H.264ç æµåˆ†æå·¥å…·
  * H.264 Stream Analysis Tools
  *
  */
@@ -40,13 +40,13 @@ FILE *bits = NULL;                //!< the bit stream file
 
 static int FindStartCode2 (unsigned char *Buf)
 {
-	if(Buf[0]!=0 || Buf[1]!=0 || Buf[2] !=1) return 0; //ÅĞ¶ÏÊÇ·ñÎª0x000001,Èç¹ûÊÇ·µ»Ø1
+	if(Buf[0]!=0 || Buf[1]!=0 || Buf[2] !=1) return 0; //åˆ¤æ–­æ˜¯å¦ä¸º0x000001,å¦‚æœæ˜¯è¿”å›1
 	else return 1;
 }
 
 static int FindStartCode3 (unsigned char *Buf)
 {
-	if(Buf[0]!=0 || Buf[1]!=0 || Buf[2] !=0 || Buf[3] !=1) return 0;//ÅĞ¶ÏÊÇ·ñÎª0x00000001,Èç¹ûÊÇ·µ»Ø1
+	if(Buf[0]!=0 || Buf[1]!=0 || Buf[2] !=0 || Buf[3] !=1) return 0;//åˆ¤æ–­æ˜¯å¦ä¸º0x00000001,å¦‚æœæ˜¯è¿”å›1
 	else return 1;
 }
 
@@ -57,8 +57,8 @@ static int info2=0, info3=0;
 CSpecialVH264Dlg *dlg;
 
 
-//Õâ¸öº¯ÊıÊäÈëÎªÒ»¸öNAL½á¹¹Ìå£¬Ö÷Òª¹¦ÄÜÎªµÃµ½Ò»¸öÍêÕûµÄNALU²¢±£´æÔÚNALU_tµÄbufÖĞ£¬»ñÈ¡ËûµÄ³¤¶È£¬Ìî³äF,IDC,TYPEÎ»¡£
-//²¢ÇÒ·µ»ØÁ½¸ö¿ªÊ¼×Ö·ûÖ®¼ä¼ä¸ôµÄ×Ö½ÚÊı£¬¼´°üº¬ÓĞÇ°×ºµÄNALUµÄ³¤¶È
+//è¿™ä¸ªå‡½æ•°è¾“å…¥ä¸ºä¸€ä¸ªNALç»“æ„ä½“ï¼Œä¸»è¦åŠŸèƒ½ä¸ºå¾—åˆ°ä¸€ä¸ªå®Œæ•´çš„NALUå¹¶ä¿å­˜åœ¨NALU_tçš„bufä¸­ï¼Œè·å–ä»–çš„é•¿åº¦ï¼Œå¡«å……F,IDC,TYPEä½ã€‚
+//å¹¶ä¸”è¿”å›ä¸¤ä¸ªå¼€å§‹å­—ç¬¦ä¹‹é—´é—´éš”çš„å­—èŠ‚æ•°ï¼Œå³åŒ…å«æœ‰å‰ç¼€çš„NALUçš„é•¿åº¦
 int GetAnnexbNALU (NALU_t *nalu)
 {
   int pos = 0;
@@ -68,31 +68,31 @@ int GetAnnexbNALU (NALU_t *nalu)
   if ((Buf = (unsigned char*)calloc (nalu->max_size , sizeof(char))) == NULL) 
 	  printf ("GetAnnexbNALU: Could not allocate Buf memory\n");
 
-  nalu->startcodeprefix_len=3;//³õÊ¼»¯ÂëÁ÷ĞòÁĞµÄ¿ªÊ¼×Ö·ûÎª3¸ö×Ö½Ú
+  nalu->startcodeprefix_len=3;//åˆå§‹åŒ–ç æµåºåˆ—çš„å¼€å§‹å­—ç¬¦ä¸º3ä¸ªå­—èŠ‚
   
-   if (3 != fread (Buf, 1, 3, bits))//´ÓÂëÁ÷ÖĞ¶Á3¸ö×Ö½Ú
+   if (3 != fread (Buf, 1, 3, bits))//ä»ç æµä¸­è¯»3ä¸ªå­—èŠ‚
 	   {
 		free(Buf);
 		return 0;
 	   }
-   info2 = FindStartCode2 (Buf);//ÅĞ¶ÏÊÇ·ñÎª0x000001 
+   info2 = FindStartCode2 (Buf);//åˆ¤æ–­æ˜¯å¦ä¸º0x000001 
    if(info2 != 1) 
    {
-	//Èç¹û²»ÊÇ£¬ÔÙ¶ÁÒ»¸ö×Ö½Ú
-    if(1 != fread(Buf+3, 1, 1, bits))//¶ÁÒ»¸ö×Ö½Ú
+	//å¦‚æœä¸æ˜¯ï¼Œå†è¯»ä¸€ä¸ªå­—èŠ‚
+    if(1 != fread(Buf+3, 1, 1, bits))//è¯»ä¸€ä¸ªå­—èŠ‚
 		{
 		 free(Buf);
 		 return 0;
 		}
-    info3 = FindStartCode3 (Buf);//ÅĞ¶ÏÊÇ·ñÎª0x00000001
-    if (info3 != 1)//Èç¹û²»ÊÇ£¬·µ»Ø-1
+    info3 = FindStartCode3 (Buf);//åˆ¤æ–­æ˜¯å¦ä¸º0x00000001
+    if (info3 != 1)//å¦‚æœä¸æ˜¯ï¼Œè¿”å›-1
 		{ 
 		 free(Buf);
 		 return -1;
 		}
     else 
 		{
-		//Èç¹ûÊÇ0x00000001,µÃµ½¿ªÊ¼Ç°×ºÎª4¸ö×Ö½Ú
+		//å¦‚æœæ˜¯0x00000001,å¾—åˆ°å¼€å§‹å‰ç¼€ä¸º4ä¸ªå­—èŠ‚
 		 pos = 4;
 		 nalu->startcodeprefix_len = 4;
 		}
@@ -100,18 +100,18 @@ int GetAnnexbNALU (NALU_t *nalu)
    
    else
 	   {
-	   //Èç¹ûÊÇ0x000001,µÃµ½¿ªÊ¼Ç°×ºÎª3¸ö×Ö½Ú
+	   //å¦‚æœæ˜¯0x000001,å¾—åˆ°å¼€å§‹å‰ç¼€ä¸º3ä¸ªå­—èŠ‚
 		nalu->startcodeprefix_len = 3;
 		pos = 3;
 	   }
-   //²éÕÒÏÂÒ»¸ö¿ªÊ¼×Ö·ûµÄ±êÖ¾Î»
+   //æŸ¥æ‰¾ä¸‹ä¸€ä¸ªå¼€å§‹å­—ç¬¦çš„æ ‡å¿—ä½
    StartCodeFound = 0;
    info2 = 0;
    info3 = 0;
   
   while (!StartCodeFound)
   {
-    if (feof (bits))//ÅĞ¶ÏÊÇ·ñµ½ÁËÎÄ¼şÎ²
+    if (feof (bits))//åˆ¤æ–­æ˜¯å¦åˆ°äº†æ–‡ä»¶å°¾
     {
       nalu->len = (pos-1)-nalu->startcodeprefix_len;
       memcpy (nalu->buf, &Buf[nalu->startcodeprefix_len], nalu->len);     
@@ -121,10 +121,10 @@ int GetAnnexbNALU (NALU_t *nalu)
       free(Buf);
       return pos-1;
     }
-    Buf[pos++] = fgetc (bits);//¶ÁÒ»¸ö×Ö½Úµ½BUFÖĞ
-    info3 = FindStartCode3(&Buf[pos-4]);//ÅĞ¶ÏÊÇ·ñÎª0x00000001
+    Buf[pos++] = fgetc (bits);//è¯»ä¸€ä¸ªå­—èŠ‚åˆ°BUFä¸­
+    info3 = FindStartCode3(&Buf[pos-4]);//åˆ¤æ–­æ˜¯å¦ä¸º0x00000001
     if(info3 != 1)
-      info2 = FindStartCode2(&Buf[pos-3]);//ÅĞ¶ÏÊÇ·ñÎª0x000001
+      info2 = FindStartCode2(&Buf[pos-3]);//åˆ¤æ–­æ˜¯å¦ä¸º0x000001
     StartCodeFound = (info2 == 1 || info3 == 1);
   }
   
@@ -134,7 +134,7 @@ int GetAnnexbNALU (NALU_t *nalu)
   // have.  Hence, go back in the file
   rewind = (info3 == 1)? -4 : -3;
 
-  if (0 != fseek (bits, rewind, SEEK_CUR))//°ÑÎÄ¼şÖ¸ÕëÖ¸ÏòÇ°Ò»¸öNALUµÄÄ©Î²
+  if (0 != fseek (bits, rewind, SEEK_CUR))//æŠŠæ–‡ä»¶æŒ‡é’ˆæŒ‡å‘å‰ä¸€ä¸ªNALUçš„æœ«å°¾
   {
     free(Buf);
 	printf("GetAnnexbNALU: Cannot fseek in the bit stream file");
@@ -145,13 +145,13 @@ int GetAnnexbNALU (NALU_t *nalu)
   // start code, and (pos+rewind)-startcodeprefix_len is the size of the NALU excluding the start code
 
   nalu->len = (pos+rewind)-nalu->startcodeprefix_len;
-  memcpy (nalu->buf, &Buf[nalu->startcodeprefix_len], nalu->len);//¿½±´Ò»¸öÍêÕûNALU£¬²»¿½±´ÆğÊ¼Ç°×º0x000001»ò0x00000001
+  memcpy (nalu->buf, &Buf[nalu->startcodeprefix_len], nalu->len);//æ‹·è´ä¸€ä¸ªå®Œæ•´NALUï¼Œä¸æ‹·è´èµ·å§‹å‰ç¼€0x000001æˆ–0x00000001
   nalu->forbidden_bit = nalu->buf[0] & 0x80; //1 bit
   nalu->nal_reference_idc = nalu->buf[0] & 0x60; // 2 bit
   nalu->nal_unit_type = (nalu->buf[0]) & 0x1f;// 5 bit
   free(Buf);
  
-  return (pos+rewind);//·µ»ØÁ½¸ö¿ªÊ¼×Ö·ûÖ®¼ä¼ä¸ôµÄ×Ö½ÚÊı£¬¼´°üº¬ÓĞÇ°×ºµÄNALUµÄ³¤¶È
+  return (pos+rewind);//è¿”å›ä¸¤ä¸ªå¼€å§‹å­—ç¬¦ä¹‹é—´é—´éš”çš„å­—èŠ‚æ•°ï¼Œå³åŒ…å«æœ‰å‰ç¼€çš„NALUçš„é•¿åº¦
 }
 
 
@@ -179,21 +179,21 @@ int h264_nal_parse(LPVOID lparam,char *fileurl)
 	
 	//------------------
 	int data_offset=0;
-	//¸³Öµ-----------------
+	//èµ‹å€¼-----------------
 	dlg=(CSpecialVH264Dlg *)lparam;
 	//----------
 	int nal_num=0;
 	//----------
 	while(!feof(bits)) {
 		int data_lenth;
-		data_lenth=GetAnnexbNALU(n);//Ã¿Ö´ĞĞÒ»´Î£¬ÎÄ¼şµÄÖ¸ÕëÖ¸Ïò±¾´ÎÕÒµ½µÄNALUµÄÄ©Î²£¬ÏÂÒ»¸öÎ»ÖÃ¼´ÎªÏÂ¸öNALUµÄÆğÊ¼Âë0x000001
+		data_lenth=GetAnnexbNALU(n);//æ¯æ‰§è¡Œä¸€æ¬¡ï¼Œæ–‡ä»¶çš„æŒ‡é’ˆæŒ‡å‘æœ¬æ¬¡æ‰¾åˆ°çš„NALUçš„æœ«å°¾ï¼Œä¸‹ä¸€ä¸ªä½ç½®å³ä¸ºä¸‹ä¸ªNALUçš„èµ·å§‹ç 0x000001
 		n->data_offset=data_offset;
 		data_offset=data_offset+data_lenth;
-		//Êä³öNALU³¤¶ÈºÍTYPE
+		//è¾“å‡ºNALUé•¿åº¦å’ŒTYPE
 		int nal_reference_idc=n->nal_reference_idc>>5;
 		dlg->AppendNLInfo(nal_reference_idc,n->nal_unit_type,n->len,n->len+n->startcodeprefix_len,n->data_offset);
 
-		//ÅĞ¶ÏÊÇ·ñÑ¡ÔñÁË¡°Ö»·ÖÎö5000Ìõ¡±£¬Èç¹ûÑ¡ÔñÁË¾Í²»ÔÙ·ÖÎöÁË
+		//åˆ¤æ–­æ˜¯å¦é€‰æ‹©äº†â€œåªåˆ†æ5000æ¡â€ï¼Œå¦‚æœé€‰æ‹©äº†å°±ä¸å†åˆ†æäº†
 		if(dlg->m_vh264nallistmaxnum.GetCheck()==1&&nal_num>5000){
 			break;
 		}

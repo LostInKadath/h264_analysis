@@ -1,4 +1,4 @@
-/* 
+ï»¿/* 
  * h264bitstream - a library for reading and writing H.264 video
  * Copyright (C) 2005-2007 Auroras Entertainment, LLC
  * Copyright (C) 2008-2011 Avail-TVN
@@ -29,16 +29,16 @@
 #include "h264_sei.h"
 
 FILE* h264_dbgfile = NULL;
-//´æ·ÅĞÅÏ¢µÄ×Ö·û´®
+//å­˜æ”¾ä¿¡æ¯çš„å­—ç¬¦ä¸²
 //char* tempstr=(char *)malloc(1000);
 extern char tempstr[1000];
 //char* outputstr=(char *)malloc(100000);
 extern char outputstr[100000];
 //#define printf(...) fprintf((h264_dbgfile == NULL ? stdout : h264_dbgfile), __VA_ARGS__)
-//MFCÏÂ¿ØÖÆÌ¨Êä³ö
+//MFCä¸‹æ§åˆ¶å°è¾“å‡º
 //#define printf(...) TRACE( __VA_ARGS__)
-//×éºÏ³ÉÊÊºÏMFCµÄ×Ö·û´®
-//×¢ÒâMFCÖĞEditControlµÄ»»ĞĞ·ûÊÇ\r\n£¬ĞèÒªµ¥¶ÀÌí¼Ó
+//ç»„åˆæˆé€‚åˆMFCçš„å­—ç¬¦ä¸²
+//æ³¨æ„MFCä¸­EditControlçš„æ¢è¡Œç¬¦æ˜¯\r\nï¼Œéœ€è¦å•ç‹¬æ·»åŠ 
 #define printf(...) sprintf( tempstr,__VA_ARGS__);\
 	strcat(tempstr,"\r\n");						\
 	strcat(outputstr,tempstr);

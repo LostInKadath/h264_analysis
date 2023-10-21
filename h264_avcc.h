@@ -1,4 +1,4 @@
-#ifndef _H264_AVCC_H
+﻿#ifndef _H264_AVCC_H
 #define _H264_AVCC_H        1
 
 #include <stdint.h>

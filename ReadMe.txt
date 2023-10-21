@@ -1,11 +1,11 @@
-H.264 ·ÖÎöÆ÷
+ï»¿H.264 åˆ†æå™¨
 H.264 Analysis
 
-À×Ïöæè Lei Xiaohua
+é›·éœ„éª… Lei Xiaohua
 leixiaohua1020@126.com
-ÖĞ¹ú´«Ã½´óÑ§/Êı×ÖµçÊÓ¼¼Êõ
+ä¸­å›½ä¼ åª’å¤§å­¦/æ•°å­—ç”µè§†æŠ€æœ¯
 Communication University of China / Digital TV Technology
 http://blog.csdn.net/leixiaohua1020
 
-H.264ÂëÁ÷·ÖÎö¹¤¾ß
+H.264ç æµåˆ†æå·¥å…·
 H.264 Stream Analysis Tools

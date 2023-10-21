@@ -1,14 +1,14 @@
-/* 
- * H.264 ·ÖÎöÆ÷
+ï»¿/* 
+ * H.264 åˆ†æå™¨
  * H.264 Analysis
  *
- * À×Ïöæè Lei Xiaohua
+ * é›·éœ„éª… Lei Xiaohua
  * leixiaohua1020@126.com
- * ÖĞ¹ú´«Ã½´óÑ§/Êı×ÖµçÊÓ¼¼Êõ
+ * ä¸­å›½ä¼ åª’å¤§å­¦/æ•°å­—ç”µè§†æŠ€æœ¯
  * Communication University of China / Digital TV Technology
  * http://blog.csdn.net/leixiaohua1020
  * 
- * H.264ÂëÁ÷·ÖÎö¹¤¾ß
+ * H.264ç æµåˆ†æå·¥å…·
  * H.264 Stream Analysis Tools
  *
  */
@@ -213,19 +213,19 @@ int h264_analyze(int argc, char *argv[])
 
     return 0;
 }
-//´æ·Å½âÎö³öÀ´µÄ×Ö·û´®
+//å­˜æ”¾è§£æå‡ºæ¥çš„å­—ç¬¦ä¸²
 char tempstr[1000]={0};
 //char* outputstr=(char *)malloc(100000);
 char outputstr[100000]={'\0'};
-//×Ô¼ºĞ´µÄ£¬½âÎöNALÊı¾İµÄº¯Êı
+//è‡ªå·±å†™çš„ï¼Œè§£æNALæ•°æ®çš„å‡½æ•°
 char* probe_nal_unit(char* filename,int data_offset,int data_lenth){
-	//Çå¿Õ×Ö·û´®-----------------
+	//æ¸…ç©ºå­—ç¬¦ä¸²-----------------
 	memset(outputstr,'\0',100000);
 	//tempstr=(char *)malloc(10000);
 	//outputstr=(char *)malloc(100000);
-	//ÄÚ´æÓÃÓÚ´æ·ÅNAL£¨°üº¬ÆğÊ¼Âë£©
+	//å†…å­˜ç”¨äºå­˜æ”¾NALï¼ˆåŒ…å«èµ·å§‹ç ï¼‰
 	uint8_t *nal_temp=(uint8_t *)malloc(data_lenth);
-	//´ÓÎÄ¼ş¶ÁÈ¡
+	//ä»æ–‡ä»¶è¯»å–
 	FILE *fp=fopen(filename,"rb");
 	fseek(fp,data_offset,SEEK_SET);
 	fread(nal_temp,data_lenth,1,fp);
